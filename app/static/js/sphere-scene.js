@@ -3,8 +3,8 @@
  * 
  * Features:
  * 1. Carbon-Fiber Micro-Triangular Sphere:
- *    - Extremely high geometry density (Icosahedron detail 6 = 81,920 micro-triangles + micro-weave procedural enhancement).
- *    - Completely matte black body (zero specular shine on triangle faces).
+ *    - Extremely high geometry density (Icosahedron detail 7 = 327,680 micro-triangles + micro-weave procedural enhancement).
+ *    - Transparent body with visible wireframe mesh.
  *    - Fine graphite and silver wireframe lines with subtle specular reflections & Fresnel rim.
  * 2. Permanent Smooth Wave Background:
  *    - Deep graphite organic waves generated procedurally on GPU via GLSL from scroll = 0 (Home/Hero).
@@ -25,7 +25,7 @@
     const CONFIG = {
         // Geometry
         sphereRadius: 1.30,         // Compact initial sphere size
-        subdivisionDetail: 6,       // Level 6 = 81,920 micro-triangles
+        subdivisionDetail: 7,       // Level 7 = 327,680 micro-triangles (4x detail 6, next geodesic subdivision)
         
         // Colors & Lighting
         bodyColor: [0.002, 0.002, 0.003],    // Pure matte black body (zero specular reflections)
@@ -76,7 +76,7 @@
     camera3D.position.set(0, 0, 5.5);
 
     // --- High-Density Carbon-Fiber Sphere Geometry ---
-    // Icosahedron detail 6 = 20 * 4^6 = 81,920 micro-triangles, 245,760 vertices
+    // Icosahedron detail 7 = 20 * 4^7 = 327,680 micro-triangles, 983,040 vertices
     const baseGeom = new THREE.IcosahedronGeometry(CONFIG.sphereRadius, CONFIG.subdivisionDetail);
     const nonIndexedGeom = baseGeom.toNonIndexed();
 
@@ -210,9 +210,9 @@
                 // Fresnel
                 float fresnel = pow(1.0 - max(dot(fNormal, viewDir), 0.0), 3.0);
 
-                // Carbon Fiber Body: COMPLETELY MATTE BLACK
-                // No specular highlights or reflective glare on the face itself
+                // Transparent face: nearly invisible, only wireframe visible
                 vec3 faceColor = vec3(0.003, 0.003, 0.004);
+                float faceAlpha = 0.04;  // Nearly transparent faces
 
                 // Wireframe Edge Detection via Barycentric Coordinates
                 vec3 dBary = fwidth(vBarycentric);
@@ -224,18 +224,20 @@
                 vec3 lineGleam = vec3(0.68, 0.72, 0.78);
                 float lineGleamIntensity = keySpec * 1.4 + fresnel * 0.45 + fillDiff * 0.15;
                 vec3 lineColor = mix(lineBase, lineGleam, clamp(lineGleamIntensity, 0.0, 1.0));
+                float lineAlpha = mix(0.75, 0.55, vProgress);  // Visible wireframe lines
 
-                // The face is pure matte black; ONLY the lines catch light and have reflections!
+                // Blend face and line colors with their respective alphas
                 vec3 finalColor = mix(faceColor, lineColor, edgeFactor * 0.90);
-                float alpha = mix(0.98, 0.88, vProgress);
+                float alpha = mix(faceAlpha, lineAlpha, edgeFactor * 0.90);
 
                 gl_FragColor = vec4(finalColor, alpha);
             }
         `,
         transparent: true,
         side: THREE.DoubleSide,
-        depthWrite: true,
-        depthTest: true
+        depthWrite: false,
+        depthTest: true,
+        blending: THREE.NormalBlending
     });
 
     const sphereMesh = new THREE.Mesh(nonIndexedGeom, sphereMaterial);
