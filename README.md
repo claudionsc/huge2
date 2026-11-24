@@ -1,6 +1,6 @@
-# HUGE2 - Software House Website
+# ALVI - Software House Website
 
-Modern, fullstack website for HUGE software house built with FastAPI, PostgreSQL, Jinja2, HTMX, and Tailwind CSS.
+Modern, fullstack website for ALVI software house built with FastAPI, PostgreSQL, Jinja2, HTMX, and Tailwind CSS.
 
 ## Tech Stack
 

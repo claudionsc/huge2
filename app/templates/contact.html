@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block title %}{{ t('nav_contact', locale) }} - {{ settings.app_name }}{% endblock %}
+
+{% block content %}
+<section class="py-24 sm:py-32 pt-32" id="contact">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+        <div class="reveal max-w-2xl mb-16">
+            <h1 class="font-heading text-5xl sm:text-6xl font-light leading-[1.1] tracking-tight">
+                {{ t('contact_title', locale) }}
+            </h1>
+            <p class="mt-6 text-base text-white/55 leading-relaxed">
+                {{ t('contact_subtitle', locale) }}
+            </p>
+        </div>
+
+        <div class="reveal reveal-delay-2 grid gap-16 lg:grid-cols-2">
+
+            <!-- Contact Form -->
+            <div>
+                <h2 class="font-heading text-xs font-medium uppercase tracking-widest text-white/30 mb-8">{{ t('contact_form_title', locale) }}</h2>
+                <form class="space-y-6" hx-post="/api/contact" hx-target="#form-response" hx-swap="innerHTML">
+                    <input type="hidden" name="locale" value="{{ locale }}">
+
+                    <div class="grid gap-5 sm:grid-cols-2">
+                        <div>
+                            <label for="name" class="block text-xs uppercase tracking-widest text-white/40 mb-2">{{ t('contact_name', locale) }}</label>
+                            <input type="text" id="name" name="name" required maxlength="120"
+                                class="w-full border border-white/15 bg-transparent px-4 py-3 text-sm text-white placeholder-white/25 focus:border-white/40 focus:outline-none transition-colors"
+                                placeholder="{{ t('contact_name_placeholder', locale) }}">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-xs uppercase tracking-widest text-white/40 mb-2">{{ t('contact_email', locale) }}</label>
+                            <input type="email" id="email" name="email" required maxlength="120"
+                                class="w-full border border-white/15 bg-transparent px-4 py-3 text-sm text-white placeholder-white/25 focus:border-white/40 focus:outline-none transition-colors"
+                                placeholder="{{ t('contact_email_placeholder', locale) }}">
+                        </div>
+                    </div>
+
+                    <div class="grid gap-5 sm:grid-cols-2">
+                        <div>
+                            <label for="phone" class="block text-xs uppercase tracking-widest text-white/40 mb-2">{{ t('contact_phone', locale) }}</label>
+                            <input type="tel" id="phone" name="phone" maxlength="40"
+                                class="w-full border border-white/15 bg-transparent px-4 py-3 text-sm text-white placeholder-white/25 focus:border-white/40 focus:outline-none transition-colors"
+                                placeholder="{{ t('contact_phone_placeholder', locale) }}">
+                        </div>
+                        <div>
+                            <label for="service" class="block text-xs uppercase tracking-widest text-white/40 mb-2">{{ t('contact_service', locale) }}</label>
+                            <select id="service" name="service"
+                                class="w-full border border-white/15 bg-black px-4 py-3 text-sm text-white/70 focus:border-white/40 focus:outline-none transition-colors">
+                                <option value="">{{ t('contact_service_select', locale) }}</option>
+                                {% for category in service_categories %}
+                                <optgroup label="{{ category.name(locale) }}">
+                                    {% for service in category.services_list %}
+                                    <option value="{{ service.id }}">{{ service.title(locale) }}</option>
+                                    {% endfor %}
+                                </optgroup>
+                                {% endfor %}
+                                <option value="other">{{ t('contact_service_other', locale) }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-xs uppercase tracking-widest text-white/40 mb-2">{{ t('contact_message', locale) }}</label>
+                        <textarea id="message" name="message" required rows="6" maxlength="4000"
+                            class="w-full border border-white/15 bg-transparent px-4 py-3 text-sm text-white placeholder-white/25 focus:border-white/40 focus:outline-none transition-colors resize-none"
+                            placeholder="{{ t('contact_message_placeholder', locale) }}"></textarea>
+                    </div>
+
+                    <!-- Honeypot -->
+                    <div class="hidden" aria-hidden="true">
+                        <label for="website">Website</label>
+                        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <div class="flex items-center gap-6">
+                        <button type="submit"
+                            class="bg-white text-black px-8 py-3 text-xs font-semibold uppercase tracking-widest transition-colors hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed"
+                            id="submit-btn">
+                            {{ t('contact_send', locale) }}
+                        </button>
+                        <p class="text-xs text-white/25">{{ t('contact_required', locale) }}</p>
+                    </div>
+
+                    <div id="form-response" class="mt-2"></div>
+                </form>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="space-y-12">
+                <div>
+                    <h2 class="font-heading text-xs font-medium uppercase tracking-widest text-white/30 mb-8">{{ t('contact_direct', locale) }}</h2>
+                    <div class="space-y-5">
+                        {% if company %}
+                        <div class="border-t border-white/10 pt-5">
+                            <p class="text-xs uppercase tracking-widest text-white/30 mb-1">{{ t('contact_email_label', locale) }}</p>
+                            <a href="mailto:{{ company.email }}" class="text-sm text-white/70 hover:text-white transition-colors">{{ company.email }}</a>
+                        </div>
+
+                        <div class="border-t border-white/10 pt-5">
+                            <p class="text-xs uppercase tracking-widest text-white/30 mb-1">{{ t('contact_whatsapp_label', locale) }}</p>
+                            <a href="{{ company.whatsapp_link }}" target="_blank" rel="noopener noreferrer" class="text-sm text-white/70 hover:text-white transition-colors">{{ company.whatsapp }}</a>
+                        </div>
+
+                        <div class="border-t border-white/10 pt-5">
+                            <p class="text-xs uppercase tracking-widest text-white/30 mb-1">{{ t('contact_location', locale) }}</p>
+                            <p class="text-sm text-white/50">{{ company.address(locale) }}</p>
+                        </div>
+                        <div class="border-t border-white/10"></div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="font-heading text-xs font-medium uppercase tracking-widest text-white/30 mb-6">{{ t('contact_follow', locale) }}</h2>
+                    <div class="flex gap-6">
+                        {% if company and company.instagram_url %}
+                        <a href="{{ company.instagram_url }}" target="_blank" rel="noopener noreferrer" class="text-xs uppercase tracking-widest text-white/40 hover:text-white transition-colors">Instagram</a>
+                        {% endif %}
+                        {% if company and company.linkedin_url %}
+                        <a href="{{ company.linkedin_url }}" target="_blank" rel="noopener noreferrer" class="text-xs uppercase tracking-widest text-white/40 hover:text-white transition-colors">LinkedIn</a>
+                        {% endif %}
+                        {% if company and company.facebook_url %}
+                        <a href="{{ company.facebook_url }}" target="_blank" rel="noopener noreferrer" class="text-xs uppercase tracking-widest text-white/40 hover:text-white transition-colors">Facebook</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('htmx:beforeRequest', (evt) => {
+    if (evt.target.matches('form')) {
+        const btn = evt.target.querySelector('#submit-btn');
+        if (btn) {
+            btn.disabled = true;
+            btn.textContent = '{{ t("contact_sending", locale) }}';
+        }
+    }
+});
+
+document.addEventListener('htmx:afterRequest', (evt) => {
+    if (evt.target.matches('form')) {
+        const btn = evt.target.querySelector('#submit-btn');
+        if (btn) {
+            btn.disabled = false;
+            btn.textContent = '{{ t("contact_send", locale) }}';
+        }
+    }
+});
+</script>
+{% endblock %}
