@@ -1,65 +1,55 @@
 {% extends "base.html" %}
 
-{% block title %}{{ settings.app_name }} - {{ company.tagline(locale) if company else 'Software House' }}{% endblock %}
+{% block title %}{{ settings.app_name }} - {{ t("hero_title", locale) }}{% endblock %}
 
 {% block content %}
 
-{# ═══════════════════════════════════════
-   HERO
-═══════════════════════════════════════ #}
+{# HERO #}
 <section class="relative min-h-screen flex flex-col justify-center pt-16" id="home">
     <div class="mx-auto max-w-7xl px-6 lg:px-8 w-full py-24 sm:py-32">
-
         <p class="reveal text-xs uppercase tracking-widest text-white/40 mb-10">
-            {{ t('hero_location', locale) }}
+            {{ t("hero_location", locale) }}
         </p>
-
         <h1 class="reveal reveal-delay-1 font-heading text-5xl sm:text-6xl lg:text-7xl font-light leading-[1.1] tracking-tight max-w-5xl">
-            {{ t('hero_title', locale) }}
+            {{ t("hero_title", locale) }}
         </h1>
-
         <div class="reveal reveal-delay-2 mt-8 max-w-2xl">
             <p class="text-base text-white/55 leading-relaxed">
-                {{ company.description(locale) if company else '' }}
+                {{ t("hero_subtitle", locale) }}
             </p>
         </div>
-
         <div class="reveal reveal-delay-3 mt-12 flex flex-wrap gap-4">
             <a href="/contact" class="bg-white text-black px-8 py-3 text-xs font-semibold uppercase tracking-widest transition-colors hover:bg-white/90">
-                {{ t('hero_cta_primary', locale) }}
+                {{ t("hero_cta_primary", locale) }}
             </a>
-            <a href="#services" class="border border-white/20 px-8 py-3 text-xs font-medium uppercase tracking-widest text-white/70 transition-colors hover:text-white hover:border-white/40">
-                {{ t('hero_cta_secondary', locale) }}
+            <a href="#website-development" class="border border-white/20 px-8 py-3 text-xs font-medium uppercase tracking-widest text-white/70 transition-colors hover:text-white hover:border-white/40">
+                {{ t("hero_cta_secondary", locale) }}
             </a>
         </div>
     </div>
-
     <div class="absolute bottom-8 left-6 lg:left-8 text-white/20 text-xs uppercase tracking-widest">
-        {{ t('hero_scroll', locale) }}
+        {{ t("hero_scroll", locale) }}
     </div>
 </section>
 
-{# ═══════════════════════════════════════
-   PHILOSOPHY — Point of View
-═══════════════════════════════════════ #}
-<section class="py-24 sm:py-32 border-t border-white/10" id="philosophy">
+{# ABOUT ALVI - Introdução Institucional #}
+<section class="py-24 sm:py-32 border-t border-white/10" id="about-intro">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="reveal max-w-4xl">
             <h2 class="font-heading text-4xl sm:text-5xl font-light leading-tight tracking-tight">
-                {{ t('philosophy_title', locale) }}
+                {{ t("about_title", locale) }}
             </h2>
-            <p class="mt-6 text-base text-white/55 max-w-2xl leading-relaxed">
-                {{ company.description(locale) if company else '' }}
-            </p>
+            <div class="mt-8 prose-chalk">
+                {{ t("about_description", locale) | safe }}
+            </div>
         </div>
-
         {% if values %}
-        <div class="mt-20 grid gap-0 md:grid-cols-3 border-l border-white/10">
+        <div class="mt-20 grid gap-0 md:grid-cols-4 border-l border-white/10">
             {% for value in values %}
             <div class="reveal border-r border-b border-white/10 p-8 md:p-10" style="transition-delay: {{ loop.index0 * 80 }}ms;">
-                <p class="text-xs uppercase tracking-widest text-white/30 mb-4">0{{ loop.index }}</p>
-                <h3 class="font-heading text-lg font-semibold tracking-tight">{{ value.title(locale) }}</h3>
-                <p class="mt-3 text-sm text-white/50 leading-relaxed">{{ value.description(locale) }}</p>
+                <p class="text-xs uppercase tracking-widest text-white/25 mb-4">0{{ loop.index }}</p>
+                <h3 class="font-heading text-base font-semibold tracking-tight">{{ value.title(locale) }}</h3>
+                <p class="mt-3 text-sm text-white/45 leading-relaxed">{{ value.description(locale) }}</p>
             </div>
             {% endfor %}
         </div>
@@ -67,241 +57,159 @@
     </div>
 </section>
 
-{# ═══════════════════════════════════════
-   SERVICES
-═══════════════════════════════════════ #}
-<section class="py-24 sm:py-32 border-t border-white/10" id="services">
+{# CRIAÇÃO DE SITES #}
+<section class="py-24 sm:py-32 border-t border-white/10" id="website-development">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-
         <div class="reveal max-w-2xl mb-16">
             <h2 class="font-heading text-4xl sm:text-5xl font-light leading-tight tracking-tight">
-                {{ t('services_title', locale) }}
+                {{ t("website_dev_title", locale) }}
             </h2>
             <p class="mt-6 text-base text-white/55 leading-relaxed">
-                {{ t('services_subtitle', locale) }}
+                {{ t("website_dev_subtitle", locale) }}
             </p>
         </div>
-
         <div class="space-y-0">
-            {% for category in service_categories %}
-            <div class="reveal border-t border-white/10" style="transition-delay: {{ loop.index0 * 60 }}ms;">
-                <div class="py-10 md:py-12 flex flex-col md:flex-row md:items-start gap-8 md:gap-16">
-
-                    <div class="md:w-64 flex-shrink-0">
-                        <p class="text-xs uppercase tracking-widest text-white/30 mb-2">{{ '%02d' % loop.index }}</p>
-                        <h3 class="font-heading text-xl font-semibold tracking-tight">{{ category.name(locale) }}</h3>
-                        <p class="mt-2 text-sm text-white/50 leading-relaxed">{{ category.description(locale) }}</p>
-                    </div>
-
-                    <div class="flex-1">
-                        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                            {% for service in category.services_list %}
-                            <div>
-                                <h4 class="font-heading text-sm font-semibold tracking-tight">{{ service.title(locale) }}</h4>
-                                <p class="mt-2 text-xs text-white/45 leading-relaxed">{{ service.description(locale) }}</p>
-                                {% if service.features(locale) %}
-                                <div class="mt-3 flex flex-wrap gap-2">
-                                    {% for feature in service.features(locale)[:3] %}
-                                    <span class="border border-white/15 px-2 py-0.5 text-[10px] uppercase tracking-wider text-white/40">{{ feature }}</span>
-                                    {% endfor %}
-                                </div>
-                                {% endif %}
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-            <div class="border-t border-white/10"></div>
-        </div>
-    </div>
-</section>
-
-{# ═══════════════════════════════════════
-   PRODUCTS
-═══════════════════════════════════════ #}
-{% if products %}
-<section class="py-24 sm:py-32 border-t border-white/10 bg-white/[0.02]" id="products">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-
-        <div class="reveal max-w-2xl mb-16">
-            <h2 class="font-heading text-4xl sm:text-5xl font-light leading-tight tracking-tight">
-                {{ t('products_title', locale) }}
-            </h2>
-            <p class="mt-6 text-base text-white/55 leading-relaxed">
-                {{ t('products_subtitle', locale) }}
-            </p>
-        </div>
-
-        <div class="space-y-0">
-            {% for product in products %}
-            <div class="reveal border-t border-white/10" style="transition-delay: {{ loop.index0 * 80 }}ms;">
+            <div class="reveal border-t border-white/10" style="transition-delay: 0ms;">
                 <div class="py-10 md:py-12 flex flex-col md:flex-row md:items-start gap-8 md:gap-16">
                     <div class="md:w-64 flex-shrink-0">
-                        <span class="text-xs uppercase tracking-widest text-white/30 border border-white/15 px-2 py-0.5">{{ product.status(locale) }}</span>
-                        <h3 class="mt-4 font-heading text-xl font-semibold tracking-tight">{{ product.title(locale) }}</h3>
+                        <p class="text-xs uppercase tracking-widest text-white/30 mb-2">01</p>
+                        <h3 class="font-heading text-xl font-semibold tracking-tight">{{ t("landing_pages_title", locale) }}</h3>
+                        <p class="mt-2 text-sm text-white/50 leading-relaxed">{{ t("landing_pages_desc", locale) }}</p>
                     </div>
                     <div class="flex-1">
-                        <p class="text-sm text-white/55 leading-relaxed max-w-xl">{{ product.description(locale) }}</p>
-                        {% if product.features(locale) %}
-                        <ul class="mt-6 space-y-2">
-                            {% for feature in product.features(locale) %}
-                            <li class="text-xs text-white/40 flex items-center gap-3">
+                        <ul class="space-y-3">
+                            {% for feature in t("landing_pages_features", locale).split("\n") %}
+                            <li class="text-sm text-white/50 flex items-center gap-3">
                                 <span class="w-4 h-px bg-white/20 flex-shrink-0"></span>
                                 {{ feature }}
                             </li>
                             {% endfor %}
                         </ul>
-                        {% endif %}
-                        {% if product.link %}
-                        <a href="{{ product.link }}" class="mt-6 inline-flex items-center gap-3 text-xs uppercase tracking-widest text-white/60 hover:text-white transition-colors">
-                            {{ t('products_explore', locale) }}
-                            <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                        </a>
-                        {% endif %}
                     </div>
                 </div>
             </div>
-            {% endfor %}
-            <div class="border-t border-white/10"></div>
-        </div>
-    </div>
-</section>
-{% endif %}
-
-{# ═══════════════════════════════════════
-   CASES
-═══════════════════════════════════════ #}
-{% if case_studies %}
-<section class="py-24 sm:py-32 border-t border-white/10" id="cases">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-
-        <div class="reveal max-w-2xl mb-16">
-            <h2 class="font-heading text-4xl sm:text-5xl font-light leading-tight tracking-tight">
-                {{ t('cases_title', locale) }}
-            </h2>
-        </div>
-
-        <div class="space-y-0">
-            {% for case in case_studies %}
-            <article class="reveal border-t border-white/10" style="transition-delay: {{ loop.index0 * 80 }}ms;">
+            <div class="reveal border-t border-white/10" style="transition-delay: 80ms;">
                 <div class="py-10 md:py-12 flex flex-col md:flex-row md:items-start gap-8 md:gap-16">
-
-                    <div class="md:w-16 flex-shrink-0">
-                        <p class="font-heading text-xs text-white/25 tracking-widest">{{ '%02d' % loop.index }}</p>
+                    <div class="md:w-64 flex-shrink-0">
+                        <p class="text-xs uppercase tracking-widest text-white/30 mb-2">02</p>
+                        <h3 class="font-heading text-xl font-semibold tracking-tight">{{ t("institutional_sites_title", locale) }}</h3>
+                        <p class="mt-2 text-sm text-white/50 leading-relaxed">{{ t("institutional_sites_desc", locale) }}</p>
                     </div>
-
                     <div class="flex-1">
-                        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-                            <div class="md:w-1/2">
-                                <h3 class="font-heading text-xl font-semibold tracking-tight">{{ case.title(locale) }}</h3>
-                                <p class="mt-1 text-sm text-white/40">{{ case.client(locale) }}</p>
-                                <p class="mt-4 text-sm text-white/55 leading-relaxed">{{ case.description(locale) }}</p>
-                                <div class="mt-5 flex flex-wrap gap-2">
-                                    {% for tech in case.technologies(locale)[:5] %}
-                                    <span class="border border-white/15 px-2 py-0.5 text-[10px] uppercase tracking-wider text-white/35">{{ tech }}</span>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                            <div class="md:w-5/12 space-y-3 text-xs text-white/40 leading-relaxed">
-                                <p><span class="text-white/60 font-medium uppercase tracking-wider">{{ t('cases_challenge', locale) }}</span><br>{{ case.challenge(locale)[:120] }}…</p>
-                                <p><span class="text-white/60 font-medium uppercase tracking-wider">{{ t('cases_results', locale) }}</span><br>{{ case.results(locale)[:120] }}…</p>
-                            </div>
-                        </div>
+                        <ul class="space-y-3">
+                            {% for feature in t("institutional_sites_features", locale).split("\n") %}
+                            <li class="text-sm text-white/50 flex items-center gap-3">
+                                <span class="w-4 h-px bg-white/20 flex-shrink-0"></span>
+                                {{ feature }}
+                            </li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
-            </article>
-            {% endfor %}
+            </div>
             <div class="border-t border-white/10"></div>
-        </div>
-
-        <div class="mt-12">
-            <a href="/portfolio" class="inline-flex items-center gap-3 text-xs uppercase tracking-widest text-white/50 hover:text-white transition-colors">
-                {{ t('cases_view_all', locale) }}
-                <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-            </a>
         </div>
     </div>
 </section>
-{% endif %}
 
-{# ═══════════════════════════════════════
-   ABOUT
-═══════════════════════════════════════ #}
-<section class="py-24 sm:py-32 border-t border-white/10 bg-white/[0.02]" id="about">
+{# HOSPEDAGEM E MANUTENÇÃO #}
+<section class="py-24 sm:py-32 border-t border-white/10 bg-white/[0.02]" id="hosting">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-
         <div class="reveal max-w-2xl mb-16">
             <h2 class="font-heading text-4xl sm:text-5xl font-light leading-tight tracking-tight">
-                {{ t('about_title', locale) }}
+                {{ t("hosting_title", locale) }}
             </h2>
+            <p class="mt-6 text-base text-white/55 leading-relaxed">
+                {{ t("hosting_subtitle", locale) }}
+            </p>
         </div>
-
-        {% if about_sections %}
-        <div class="space-y-0">
-            {% for section in about_sections %}
-            <div class="reveal border-t border-white/10" style="transition-delay: {{ loop.index0 * 80 }}ms;">
-                <div class="py-10 md:py-12 flex flex-col md:flex-row gap-10 md:gap-20">
-                    <div class="md:w-64 flex-shrink-0">
-                        <p class="text-xs uppercase tracking-widest text-white/25 mb-2">{{ '%02d' % loop.index }}</p>
-                        <h3 class="font-heading text-lg font-semibold tracking-tight">{{ section.title(locale) }}</h3>
-                        <p class="mt-2 text-sm text-white/40">{{ section.subtitle(locale) }}</p>
-                    </div>
-                    <div class="flex-1 text-sm text-white/55 leading-relaxed prose-chalk">
-                        {{ section.content(locale) | safe }}
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-            <div class="border-t border-white/10"></div>
-        </div>
-        {% endif %}
-
-        {% if team_members %}
-        <div class="reveal mt-20">
-            <p class="text-xs uppercase tracking-widest text-white/30 mb-10">{{ t('about_team_title', locale) }}</p>
-            <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-                {% for member in team_members %}
-                <div class="reveal" style="transition-delay: {{ loop.index0 * 60 }}ms;">
-                    {% if member.image_url %}
-                    <div class="aspect-square bg-white/5 overflow-hidden mb-5">
-                        <img src="{{ member.image_url }}" alt="{{ member.name }}" class="w-full h-full object-cover grayscale opacity-80">
-                    </div>
-                    {% else %}
-                    <div class="aspect-square bg-white/5 mb-5 flex items-center justify-center">
-                        <span class="text-white/10 text-4xl font-heading font-light">{{ member.name[0] }}</span>
-                    </div>
-                    {% endif %}
-                    <h4 class="font-heading text-sm font-semibold tracking-tight">{{ member.name }}</h4>
-                    <p class="text-xs text-white/40 uppercase tracking-wider mt-1">{{ member.role(locale) }}</p>
-                    <p class="mt-3 text-xs text-white/40 leading-relaxed">{{ member.bio(locale) }}</p>
-                </div>
+        <div class="reveal border-t border-white/10 pt-12">
+            <ul class="space-y-4">
+                {% for feature in t("hosting_features", locale).split("\n") %}
+                <li class="text-base text-white/55 leading-relaxed flex items-center gap-3">
+                    <span class="w-5 h-px bg-white/20 flex-shrink-0"></span>
+                    {{ feature }}
+                </li>
                 {% endfor %}
-            </div>
+            </ul>
         </div>
-        {% endif %}
     </div>
 </section>
 
-{# ═══════════════════════════════════════
-   CTA
-═══════════════════════════════════════ #}
-<section class="py-32 sm:py-40 border-t border-white/10">
+{# E-MAIL PROFISSIONAL #}
+<section class="py-24 sm:py-32 border-t border-white/10" id="professional-email">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="reveal max-w-2xl mb-16">
+            <h2 class="font-heading text-4xl sm:text-5xl font-light leading-tight tracking-tight">
+                {{ t("email_title", locale) }}
+            </h2>
+            <p class="mt-6 text-base text-white/55 leading-relaxed">
+                {{ t("email_subtitle", locale) }}
+            </p>
+        </div>
+        <div class="reveal reveal-delay-1 grid gap-8 md:grid-cols-2">
+            <div class="border-t border-white/10 pt-12">
+                <h3 class="font-heading text-lg font-semibold tracking-tight mb-4">Exemplos</h3>
+                <div class="font-mono text-sm text-white/50 whitespace-pre-line leading-relaxed">
+                    {{ t("email_examples", locale) }}
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-12">
+                <h3 class="font-heading text-lg font-semibold tracking-tight mb-4">O que estÃ¡ incluso</h3>
+                <ul class="space-y-3">
+                    {% for feature in t("email_features", locale).split("\n") %}
+                    <li class="text-sm text-white/50 flex items-center gap-3">
+                        <span class="w-4 h-px bg-white/20 flex-shrink-0"></span>
+                        {{ feature }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                <p class="mt-6 text-xs text-white/40">Pode ser contratado independentemente da criaÃ§Ã£o de um site.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# BENEFÍCIOS #}
+<section class="py-24 sm:py-32 border-t border-white/10 bg-white/[0.02]" id="benefits">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="reveal max-w-2xl mb-16">
+            <h2 class="font-heading text-4xl sm:text-5xl font-light leading-tight tracking-tight">
+                {{ t("benefits_title", locale) }}
+            </h2>
+            <p class="mt-6 text-base text-white/55 leading-relaxed">
+                {{ t("benefits_subtitle", locale) }}
+            </p>
+        </div>
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {% set benefit_keys = ["credibility", "reach", "communication", "control"] %}
+            {% for key in benefit_keys %}
+            <div class="reveal border-t border-white/10 pt-10" style="transition-delay: {{ loop.index0 * 80 }}ms;">
+                <h3 class="font-heading text-lg font-semibold tracking-tight">{{ t("benefit_" + key, locale) }}</h3>
+                <p class="mt-3 text-sm text-white/50 leading-relaxed">{{ t("benefit_" + key + "_desc", locale) }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{# CTA #}
+<section class="py-32 sm:py-40 border-t border-white/10" id="cta">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="reveal max-w-4xl">
             <h2 class="font-heading text-5xl sm:text-6xl lg:text-7xl font-light leading-[1.1] tracking-tight">
-                {{ t('cta_title', locale) }}
+                {{ t("cta_title", locale) }}
             </h2>
             <p class="mt-8 text-base text-white/55 max-w-xl leading-relaxed">
-                {{ t('cta_subtitle', locale) }}
+                {{ t("cta_subtitle", locale) }}
             </p>
             <div class="mt-12 flex flex-wrap gap-4">
                 <a href="/contact" class="bg-white text-black px-10 py-4 text-xs font-semibold uppercase tracking-widest transition-colors hover:bg-white/90">
-                    {{ t('cta_primary', locale) }}
+                    {{ t("cta_primary", locale) }}
                 </a>
-                <a href="#services" class="border border-white/20 px-10 py-4 text-xs font-medium uppercase tracking-widest text-white/70 transition-colors hover:text-white hover:border-white/40">
-                    {{ t('cta_secondary', locale) }}
+                <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" class="border border-white/20 px-10 py-4 text-xs font-medium uppercase tracking-widest text-white/70 transition-colors hover:text-white hover:border-white/40">
+                    {{ t("cta_secondary", locale) }}
+                    <svg class="h-3 w-3 ml-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.466-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.454.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.472.099-.174.05-.372-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.372-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.433.182.674.28.878.28.203 0 .401-.099.57-.28.173-.173.203-.298.15-.644-.05-.347-.174-.793-.223-1.115-.05-.323-.074-.67-.074-1.142 0-.453-.105-1.044-.203-1.494a4.5 4.5 0 0 0-.52-.967 4.5 4.5 0 0 0-.897-.897 4.5 4.5 0 0 0-.967-.52c-.426-.075-1.044-.173-1.516-.273-.453-.075-.933-.124-1.412-.124-.479 0-.958.049-1.437.148-.479.099-1.115.472-1.494.944-.352.472-.52 1.142-.52 1.612 0 .472.149 1.094.446 1.494.272.372.694.967 1.04 1.589.347.622 1.37 1.842 2.53 2.478.148.074.297.1.472.1.174 0 .347-.025.52-.1.173-.074.347-.223.52-.422.173-.198.173-.396.123-.622-.05-.223-.224-.742-.347-1.164-.123-.422-.373-.793-.57-1.065-.197-.273-.42-.446-.693-.52l-.174-.074c-.422-.174-1.065-.174-1.337 0-.148.074-.297.198-.472.347-.174.148-.323.323-.446.546-.123.223-.148.446-.148.693 0 .248.025.496.074.743.05.248.148.57.323.84.174.272.472.595.84.868.373.272 1.015.52 1.463.67.223.074.446.124.693.124.248 0 .496-.025.743-.074.248-.074.496-.173.718-.323.224-.148.42-.347.568-.52.148-.198.198-.373.198-.546 0-.174-.05-.372-.148-.546-.099-.174-.323-.472-.568-.693-.248-.224-.52-.397-.793-.52l-.52-.099c-.273 0-.52.025-.792.148s-.472.373-.622.622c-.148.248-.198.546-.198.868 0 .323.05.645.173.868.123.223.323.472.57.645.248.174.57.273.893.273.173 0 .372-.025.57-.1.198-.074.372-.223.57-.422.198-.198.297-.446.297-.693 0-.248-.099-.472-.248-.693-.148-.223-.422-.496-.718-.743-.297-.248-.67-.496-1.094-.67-.422-.174-.893-.273-1.363-.273-.472 0-.944.074-1.388.223-.446.148-.84.347-1.164.595-.323.248-.595.546-.817.893-.223.347-.323.743-.323 1.164 0 .422.099.868.273 1.19.174.323.446.67.817.944.373.273.793.472 1.239.52.446.05.893.074 1.337.074.497 0 .995-.074 1.463-.223.497-.148.944-.397 1.266-.718.323-.323.57-.718.718-1.164.148-.446.148-.893.099-1.337-.05-.446-.174-.84-.347-1.19-.173-.347-.446-.693-.817-.967-.373-.273-.793-.446-1.239-.52-.446-.05-.893-.074-1.337-.074z"/></svg>
                 </a>
             </div>
         </div>

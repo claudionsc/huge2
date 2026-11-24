@@ -5,17 +5,21 @@ DEFAULT_LOCALE = "pt"
 
 TRANSLATIONS: dict[str, dict[str, str]] = {
     # Navigation
-    "nav_services": {
-        "pt": "Serviços",
-        "en": "Services",
+    "nav_home": {
+        "pt": "Início",
+        "en": "Home",
     },
-    "nav_products": {
-        "pt": "Produtos",
-        "en": "Products",
+    "nav_website_development": {
+        "pt": "Criação de Sites",
+        "en": "Website Development",
     },
-    "nav_cases": {
-        "pt": "Cases",
-        "en": "Cases",
+    "nav_hosting": {
+        "pt": "Hospedagem",
+        "en": "Hosting",
+    },
+    "nav_professional_email": {
+        "pt": "E-mail Profissional",
+        "en": "Professional Email",
     },
     "nav_about": {
         "pt": "Sobre",
@@ -25,9 +29,9 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "pt": "Contato",
         "en": "Contact",
     },
-    "nav_cta": {
-        "pt": "Fale Conosco",
-        "en": "Let's Talk",
+    "nav_cases": {
+        "pt": "Projetos",
+        "en": "Projects",
     },
 
     # Hero
@@ -36,15 +40,19 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "en": "São Paulo, BR · Worldwide",
     },
     "hero_title": {
-        "pt": "Transformamos ideias ambiciosas em produtos digitais escaláveis.",
-        "en": "We turn ambitious ideas into scalable digital products.",
+        "pt": "Sua empresa merece uma presença digital profissional.",
+        "en": "Your business deserves a professional digital presence.",
+    },
+    "hero_subtitle": {
+        "pt": "Criamos sites profissionais, oferecemos hospedagem e configuramos e-mails personalizados para ajudar sua empresa a transmitir credibilidade e conquistar espaço na internet.",
+        "en": "We create professional websites, provide hosting, and set up custom emails to help your business convey credibility and gain space on the internet.",
     },
     "hero_cta_primary": {
-        "pt": "Iniciar Projeto",
-        "en": "Start a Project",
+        "pt": "Solicitar Orçamento",
+        "en": "Request a Quote",
     },
     "hero_cta_secondary": {
-        "pt": "Explorar Serviços",
+        "pt": "Conhecer Serviços",
         "en": "Explore Services",
     },
     "hero_scroll": {
@@ -52,86 +60,148 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "en": "Scroll",
     },
 
-    # Philosophy
-    "philosophy_title": {
-        "pt": "Enxergamos o negócio por trás da tecnologia.",
-        "en": "We see the business behind the technology.",
+    # Website Development
+    "website_dev_title": {
+        "pt": "Criação de Sites",
+        "en": "Website Development",
+    },
+    "website_dev_subtitle": {
+        "pt": "Sites profissionais que transmitem credibilidade e convertem visitantes em clientes.",
+        "en": "Professional websites that convey credibility and convert visitors into customers.",
+    },
+    "landing_pages_title": {
+        "pt": "Landing Pages",
+        "en": "Landing Pages",
+    },
+    "landing_pages_desc": {
+        "pt": "Páginas para apresentar serviços e divulgar ofertas com foco em conversão.",
+        "en": "Pages to present services and promote offers with a focus on conversion.",
+    },
+    "landing_pages_features": {
+        "pt": "Layout responsivo\nIntegração com WhatsApp\nFormulários de contato\nOtimizado para conversão",
+        "en": "Responsive layout\nWhatsApp integration\nContact forms\nOptimized for conversion",
+    },
+    "institutional_sites_title": {
+        "pt": "Sites Institucionais",
+        "en": "Business Websites",
+    },
+    "institutional_sites_desc": {
+        "pt": "Apresentação completa da sua empresa com páginas de serviços, contato e blog.",
+        "en": "Complete presentation of your company with service pages, contact, and blog.",
+    },
+    "institutional_sites_features": {
+        "pt": "Apresentação da empresa\nPáginas de serviços\nInformações de contato\nIntegração com WhatsApp\nEstrutura básica de SEO\nAdaptação para dispositivos móveis",
+        "en": "Company presentation\nService pages\nContact information\nWhatsApp integration\nBasic SEO structure\nMobile responsive",
     },
 
-    # Services
-    "services_title": {
-        "pt": "A estratégia. A construção. O caminho a seguir.",
-        "en": "The thinking. The build. The way forward.",
+    # Hosting & Maintenance
+    "hosting_title": {
+        "pt": "Hospedagem e Manutenção",
+        "en": "Hosting & Maintenance",
     },
-    "services_subtitle": {
-        "pt": "Traga-nos o desafio: um produto a definir, um sistema a evoluir ou um projeto para colocar nos trilhos.",
-        "en": "Bring us the challenge: a product to define, a system to improve or a project to get back on track.",
+    "hosting_subtitle": {
+        "pt": "Infraestrutura confiável e suporte técnico para seu site ficar sempre no ar.",
+        "en": "Reliable infrastructure and technical support to keep your website always online.",
+    },
+    "hosting_features": {
+        "pt": "Hospedagem de sites\nConfiguração de domínio e DNS\nCertificado SSL\nManutenção técnica\nAtualizações e ajustes\nMigração de hospedagem\nSuporte técnico",
+        "en": "Website hosting\nDomain and DNS configuration\nSSL certificate\nTechnical maintenance\nUpdates and adjustments\nHosting migration\nTechnical support",
+    },
+
+    # Professional Email
+    "email_title": {
+        "pt": "E-mail Profissional",
+        "en": "Professional Email",
+    },
+    "email_subtitle": {
+        "pt": "E-mails com seu domínio para transmitir profissionalismo e confiança.",
+        "en": "Emails with your domain to convey professionalism and trust.",
+    },
+    "email_examples": {
+        "pt": "contato@suaempresa.com.br\nfinanceiro@suaempresa.com.br\nvendas@suaempresa.com.br",
+        "en": "contact@yourcompany.com\nfinance@yourcompany.com\nsales@yourcompany.com",
+    },
+    "email_features": {
+        "pt": "Configuração de contas\nConfiguração em computadores e dispositivos móveis\nAuxílio na configuração de clientes de e-mail\nGerenciamento de contas\nContratação independente da criação de site",
+        "en": "Account setup\nSetup on computers and mobile devices\nEmail client configuration assistance\nAccount management\nIndependent hiring from website creation",
+    },
+
+    # Benefits
+    "benefits_title": {
+        "pt": "Por que ter uma presença digital profissional?",
+        "en": "Why have a professional digital presence?",
+    },
+    "benefits_subtitle": {
+        "pt": "Sua empresa ganha credibilidade, alcance e ferramentas para se comunicar melhor com clientes.",
+        "en": "Your company gains credibility, reach, and tools to better communicate with customers.",
+    },
+    "benefit_credibility": {
+        "pt": "Credibilidade",
+        "en": "Credibility",
+    },
+    "benefit_credibility_desc": {
+        "pt": "Um site profissional e e-mail com domínio próprio transmitem confiança imediata.",
+        "en": "A professional website and custom domain email convey immediate trust.",
+    },
+    "benefit_reach": {
+        "pt": "Alcance",
+        "en": "Reach",
+    },
+    "benefit_reach_desc": {
+        "pt": "Esteja disponível 24/7 para clientes em qualquer lugar, sem limitações geográficas.",
+        "en": "Be available 24/7 for customers anywhere, without geographic limitations.",
+    },
+    "benefit_communication": {
+        "pt": "Comunicação",
+        "en": "Communication",
+    },
+    "benefit_communication_desc": {
+        "pt": "Canais profissionais (site, e-mail, WhatsApp) facilitam o contato e agilizam negócios.",
+        "en": "Professional channels (website, email, WhatsApp) facilitate contact and speed up business.",
+    },
+    "benefit_control": {
+        "pt": "Controle",
+        "en": "Control",
+    },
+    "benefit_control_desc": {
+        "pt": "Você gerencia sua presença online sem depender apenas de redes sociais de terceiros.",
+        "en": "You manage your online presence without relying solely on third-party social networks.",
+    },
+
+    # CTA
+    "cta_title": {
+        "pt": "Pronto para levar sua empresa para o próximo nível?",
+        "en": "Ready to take your business to the next level?",
+    },
+    "cta_subtitle": {
+        "pt": "Solicite um orçamento sem compromisso e descubra como podemos ajudar sua empresa a crescer na internet.",
+        "en": "Request a no-obligation quote and discover how we can help your business grow online.",
     },
     "services_ready_title": {
-        "pt": "Pronto para iniciar seu projeto?",
-        "en": "Ready to start your project?",
+        "pt": "Pronto para começar?",
+        "en": "Ready to get started?",
     },
     "services_ready_subtitle": {
-        "pt": "Vamos conversar sobre seu desafio e encontrar o melhor caminho juntos.",
-        "en": "Let's discuss your challenge and find the best way forward together.",
+        "pt": "Entre em contato e vamos conversar sobre seu projeto.",
+        "en": "Get in touch and let's talk about your project.",
     },
-    "services_ready_cta": {
-        "pt": "Entrar em Contato",
-        "en": "Get in Touch",
+    "cta_primary": {
+        "pt": "Solicitar Orçamento",
+        "en": "Request a Quote",
     },
-
-    # Products
-    "products_title": {
-        "pt": "Ideias colocadas em prática.",
-        "en": "Ideas, put to work.",
-    },
-    "products_subtitle": {
-        "pt": "Produtos próprios nascidos de problemas reais que enfrentamos criando para clientes.",
-        "en": "Our own products born from real problems we faced building for clients.",
-    },
-    "products_explore": {
-        "pt": "Conhecer",
-        "en": "Explore",
-    },
-
-    # Cases
-    "cases_title": {
-        "pt": "Experiências selecionadas do nosso portfólio.",
-        "en": "Selected experience from our portfolio.",
-    },
-    "cases_subtitle": {
-        "pt": "Desafios reais, soluções reais, resultados mensuráveis.",
-        "en": "Real challenges, real solutions, measurable results.",
-    },
-    "cases_challenge": {
-        "pt": "Desafio",
-        "en": "Challenge",
-    },
-    "cases_solution": {
-        "pt": "Solução",
-        "en": "Solution",
-    },
-    "cases_results": {
-        "pt": "Resultados",
-        "en": "Results",
-    },
-    "cases_view_all": {
-        "pt": "Ver Todos os Cases",
-        "en": "View All Cases",
-    },
-    "cases_empty_title": {
-        "pt": "Nenhum case ainda",
-        "en": "No case studies yet",
-    },
-    "cases_empty_desc": {
-        "pt": "Volte em breve para conferir nossos trabalhos mais recentes.",
-        "en": "Check back soon for our latest work.",
+    "cta_secondary": {
+        "pt": "Falar no WhatsApp",
+        "en": "Chat on WhatsApp",
     },
 
     # About
     "about_title": {
-        "pt": "Por trás da ALVI",
-        "en": "Behind ALVI",
+        "pt": "Sobre a Alvi",
+        "en": "About Alvi",
+    },
+    "about_description": {
+        "pt": "A Alvi nasceu com o propósito de tornar a presença digital mais acessível para empresas e profissionais. Acreditamos que todo negócio merece uma apresentação profissional na internet e ferramentas digitais que facilitem sua comunicação com clientes.\n\nOferecemos soluções práticas em criação de sites, hospedagem, manutenção e e-mail profissional, acompanhando nossos clientes desde a configuração inicial até o suporte necessário para manter sua presença digital.",
+        "en": "Alvi was born with the purpose of making digital presence more accessible for businesses and professionals. We believe every business deserves a professional presentation on the internet and digital tools that facilitate communication with clients.\n\nWe offer practical solutions in website creation, hosting, maintenance, and professional email, accompanying our clients from initial setup to the support needed to maintain their digital presence.",
     },
     "about_values_title": {
         "pt": "Nossos Valores",
@@ -141,33 +211,47 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "pt": "A Equipe",
         "en": "The Team",
     },
-
-    # CTA
-    "cta_title": {
-        "pt": "Pronto para construir algo extraordinário?",
-        "en": "Ready to build something remarkable?",
+    "value_accessibility": {
+        "pt": "Acessibilidade",
+        "en": "Accessibility",
     },
-    "cta_subtitle": {
-        "pt": "Traga-nos seu desafio. Nós entregamos a estratégia, a engenharia e a parceria para torná-lo realidade.",
-        "en": "Bring us your challenge. We'll bring the strategy, engineering, and partnership to make it happen.",
+    "value_accessibility_desc": {
+        "pt": "Tornamos a presença digital acessível para empresas de todos os portes.",
+        "en": "We make digital presence accessible for businesses of all sizes.",
     },
-    "cta_primary": {
-        "pt": "Iniciar Conversa",
-        "en": "Start a Conversation",
+    "value_simplicity": {
+        "pt": "Simplicidade",
+        "en": "Simplicity",
     },
-    "cta_secondary": {
-        "pt": "Conhecer Nosso Trabalho",
-        "en": "See Our Work",
+    "value_simplicity_desc": {
+        "pt": "Soluções práticas, sem complicação técnica desnecessária.",
+        "en": "Practical solutions, without unnecessary technical complexity.",
+    },
+    "value_trust": {
+        "pt": "Confiança",
+        "en": "Trust",
+    },
+    "value_trust_desc": {
+        "pt": "Entregamos o que prometemos, com transparência e suporte contínuo.",
+        "en": "We deliver what we promise, with transparency and continuous support.",
+    },
+    "value_proximity": {
+        "pt": "Proximidade",
+        "en": "Proximity",
+    },
+    "value_proximity_desc": {
+        "pt": "Acompanhamos de perto cada cliente, do início ao suporte contínuo.",
+        "en": "We closely accompany each client, from start to ongoing support.",
     },
 
     # Contact
     "contact_title": {
-        "pt": "Vamos trabalhar juntos.",
-        "en": "Let's work together.",
+        "pt": "Vamos conversar?",
+        "en": "Let's talk?",
     },
     "contact_subtitle": {
-        "pt": "Tem um projeto em mente? Vamos conversar sobre como podemos ajudar a dar vida às suas ideias.",
-        "en": "Have a project in mind? Let's discuss how we can help bring your ideas to life.",
+        "pt": "Tem um projeto em mente ou precisa de ajuda com sua presença digital? Entre em contato conosco.",
+        "en": "Have a project in mind or need help with your digital presence? Get in touch with us.",
     },
     "contact_form_title": {
         "pt": "Enviar uma Mensagem",
@@ -214,8 +298,8 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "en": "Message *",
     },
     "contact_message_placeholder": {
-        "pt": "Conte-nos sobre seu projeto, prazos, orçamento ou apenas dê um olá...",
-        "en": "Tell us about your project, timeline, budget, or just say hi...",
+        "pt": "Conte-nos sobre sua necessidade, prazo, orçamento ou apenas dê um olá...",
+        "en": "Tell us about your needs, timeline, budget, or just say hi...",
     },
     "contact_send": {
         "pt": "Enviar Mensagem",
@@ -274,10 +358,6 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
     "footer_about_us": {
         "pt": "Sobre Nós",
         "en": "About Us",
-    },
-    "footer_case_studies": {
-        "pt": "Cases de Sucesso",
-        "en": "Case Studies",
     },
     "footer_rights": {
         "pt": "Todos os direitos reservados.",

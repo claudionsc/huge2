@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ t('nav_cases', locale) }} - {{ settings.app_name }}{% endblock %}
+{% block title %}{{ t('nav_cases', locale) if t('nav_cases', locale) != 'nav_cases' else 'Projetos' }} - {{ settings.app_name }}{% endblock %}
 
 {% block content %}
 <section class="py-24 sm:py-32 pt-32" id="cases">
@@ -8,10 +8,10 @@
 
         <div class="reveal max-w-2xl mb-16">
             <h1 class="font-heading text-5xl sm:text-6xl font-light leading-[1.1] tracking-tight">
-                {{ t('cases_title', locale) }}
+                Projetos Recentes
             </h1>
             <p class="mt-6 text-base text-white/55 leading-relaxed">
-                {{ t('cases_subtitle', locale) }}
+                Conheça alguns dos sites e presenças digitais que criamos para nossos clientes.
             </p>
         </div>
 
@@ -39,15 +39,15 @@
 
                         <div class="lg:w-5/12 space-y-6 text-xs leading-relaxed text-white/40">
                             <div>
-                                <p class="text-white/55 font-medium uppercase tracking-wider mb-2">{{ t('cases_challenge', locale) }}</p>
+                                <p class="text-white/55 font-medium uppercase tracking-wider mb-2">Desafio</p>
                                 <p>{{ case.challenge(locale) }}</p>
                             </div>
                             <div>
-                                <p class="text-white/55 font-medium uppercase tracking-wider mb-2">{{ t('cases_solution', locale) }}</p>
+                                <p class="text-white/55 font-medium uppercase tracking-wider mb-2">Solução</p>
                                 <p>{{ case.solution(locale) }}</p>
                             </div>
                             <div>
-                                <p class="text-white/55 font-medium uppercase tracking-wider mb-2">{{ t('cases_results', locale) }}</p>
+                                <p class="text-white/55 font-medium uppercase tracking-wider mb-2">Resultados</p>
                                 <p>{{ case.results(locale) }}</p>
                             </div>
                         </div>
@@ -60,8 +60,8 @@
 
         {% else %}
         <div class="reveal border-t border-white/10 pt-20 text-center py-20">
-            <p class="text-white/25 text-sm uppercase tracking-widest">{{ t('cases_empty_title', locale) }}</p>
-            <p class="mt-2 text-xs text-white/20">{{ t('cases_empty_desc', locale) }}</p>
+            <p class="text-white/25 text-sm uppercase tracking-widest">Nenhum projeto publicado ainda</p>
+            <p class="mt-2 text-xs text-white/20">Estamos construindo nosso portfólio. Volte em breve para conferir nossos trabalhos mais recentes.</p>
         </div>
         {% endif %}
     </div>

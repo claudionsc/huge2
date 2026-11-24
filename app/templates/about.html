@@ -10,13 +10,12 @@
             <h1 class="font-heading text-5xl sm:text-6xl font-light leading-[1.1] tracking-tight">
                 {{ t('about_title', locale) }}
             </h1>
-            <p class="mt-6 text-base text-white/55 max-w-2xl leading-relaxed">
-                {{ company.description(locale) if company else '' }}
-            </p>
+            <div class="mt-8 prose-chalk">
+                {{ t('about_description', locale) | safe }}
+            </div>
         </div>
 
         <!-- Values -->
-        {% if values %}
         <div class="reveal border-t border-white/10 pt-16 mb-20">
             <p class="text-xs uppercase tracking-widest text-white/30 mb-10">{{ t('about_values_title', locale) }}</p>
             <div class="grid gap-0 md:grid-cols-4 border-l border-white/10">
@@ -29,30 +28,8 @@
                 {% endfor %}
             </div>
         </div>
-        {% endif %}
 
-        <!-- About Sections -->
-        {% if about_sections %}
-        <div class="space-y-0">
-            {% for section in about_sections %}
-            <div class="reveal border-t border-white/10" style="transition-delay: {{ loop.index0 * 80 }}ms;">
-                <div class="py-10 md:py-12 flex flex-col md:flex-row gap-10 md:gap-20">
-                    <div class="md:w-64 flex-shrink-0">
-                        <p class="text-xs uppercase tracking-widest text-white/25 mb-2">{{ '%02d' % loop.index }}</p>
-                        <h3 class="font-heading text-lg font-semibold tracking-tight">{{ section.title(locale) }}</h3>
-                        <p class="mt-2 text-sm text-white/40">{{ section.subtitle(locale) }}</p>
-                    </div>
-                    <div class="flex-1 text-sm text-white/55 leading-relaxed prose-chalk">
-                        {{ section.content(locale) | safe }}
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-            <div class="border-t border-white/10"></div>
-        </div>
-        {% endif %}
-
-        <!-- Team -->
+        <!-- Team (optional - only if team_members exist) -->
         {% if team_members %}
         <div class="reveal mt-20">
             <p class="text-xs uppercase tracking-widest text-white/30 mb-10">{{ t('about_team_title', locale) }}</p>

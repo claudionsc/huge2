@@ -9,19 +9,19 @@
             </div>
 
             <div class="hidden md:flex md:items-center md:gap-10">
-                <a href="/#services" class="text-xs font-medium uppercase tracking-widest text-white/50 transition-colors hover:text-white">{{ t('nav_services', locale) }}</a>
-                <a href="/#products" class="text-xs font-medium uppercase tracking-widest text-white/50 transition-colors hover:text-white">{{ t('nav_products', locale) }}</a>
-                <a href="/#cases" class="text-xs font-medium uppercase tracking-widest text-white/50 transition-colors hover:text-white">{{ t('nav_cases', locale) }}</a>
-                <a href="/#about" class="text-xs font-medium uppercase tracking-widest text-white/50 transition-colors hover:text-white">{{ t('nav_about', locale) }}</a>
+                <a href="/#website-development" class="text-xs font-medium uppercase tracking-widest text-white/50 transition-colors hover:text-white">{{ t('nav_website_development', locale) }}</a>
+                <a href="/#hosting" class="text-xs font-medium uppercase tracking-widest text-white/50 transition-colors hover:text-white">{{ t('nav_hosting', locale) }}</a>
+                <a href="/#professional-email" class="text-xs font-medium uppercase tracking-widest text-white/50 transition-colors hover:text-white">{{ t('nav_professional_email', locale) }}</a>
+                <a href="/about" class="text-xs font-medium uppercase tracking-widest text-white/50 transition-colors hover:text-white">{{ t('nav_about', locale) }}</a>
             </div>
 
             <div class="hidden md:flex md:items-center">
                 <div class="flex items-center gap-2 text-xs tracking-widest uppercase border-r border-white/15 pr-6 mr-6">
-                    <a href="/set-language/pt?next={{ request.url.path }}" 
+                    <a href="/set-language/pt?next={{ request.url.path }}"
                        class="transition-colors py-1 {% if locale == 'pt' %}text-white font-semibold border-b border-white{% else %}text-white/40 hover:text-white{% endif %}"
                        title="Português">PT</a>
                     <span class="text-white/20 select-none text-[10px]">/</span>
-                    <a href="/set-language/en?next={{ request.url.path }}" 
+                    <a href="/set-language/en?next={{ request.url.path }}"
                        class="transition-colors py-1 {% if locale == 'en' %}text-white font-semibold border-b border-white{% else %}text-white/40 hover:text-white{% endif %}"
                        title="English">EN</a>
                 </div>
@@ -33,10 +33,10 @@
 
             <div class="flex items-center gap-4 md:hidden">
                 <div class="flex items-center gap-2 text-xs tracking-widest uppercase">
-                    <a href="/set-language/pt?next={{ request.url.path }}" 
+                    <a href="/set-language/pt?next={{ request.url.path }}"
                        class="transition-colors py-0.5 {% if locale == 'pt' %}text-white font-semibold border-b border-white{% else %}text-white/40 hover:text-white{% endif %}">PT</a>
                     <span class="text-white/20 select-none text-[10px]">/</span>
-                    <a href="/set-language/en?next={{ request.url.path }}" 
+                    <a href="/set-language/en?next={{ request.url.path }}"
                        class="transition-colors py-0.5 {% if locale == 'en' %}text-white font-semibold border-b border-white{% else %}text-white/40 hover:text-white{% endif %}">EN</a>
                 </div>
 
@@ -59,10 +59,10 @@
 
         <div id="mobile-menu" class="md:hidden overflow-hidden transition-all duration-300 border-t border-white/10" x-show="mobileMenuOpen" x-collapse>
             <div class="py-6 space-y-5">
-                <a href="/#services" class="block text-sm font-medium uppercase tracking-widest text-white/60 hover:text-white" @click="mobileMenuOpen = false">{{ t('nav_services', locale) }}</a>
-                <a href="/#products" class="block text-sm font-medium uppercase tracking-widest text-white/60 hover:text-white" @click="mobileMenuOpen = false">{{ t('nav_products', locale) }}</a>
-                <a href="/#cases" class="block text-sm font-medium uppercase tracking-widest text-white/60 hover:text-white" @click="mobileMenuOpen = false">{{ t('nav_cases', locale) }}</a>
-                <a href="/#about" class="block text-sm font-medium uppercase tracking-widest text-white/60 hover:text-white" @click="mobileMenuOpen = false">{{ t('nav_about', locale) }}</a>
+                <a href="/#website-development" class="block text-sm font-medium uppercase tracking-widest text-white/60 hover:text-white" @click="mobileMenuOpen = false">{{ t('nav_website_development', locale) }}</a>
+                <a href="/#hosting" class="block text-sm font-medium uppercase tracking-widest text-white/60 hover:text-white" @click="mobileMenuOpen = false">{{ t('nav_hosting', locale) }}</a>
+                <a href="/#professional-email" class="block text-sm font-medium uppercase tracking-widest text-white/60 hover:text-white" @click="mobileMenuOpen = false">{{ t('nav_professional_email', locale) }}</a>
+                <a href="/about" class="block text-sm font-medium uppercase tracking-widest text-white/60 hover:text-white" @click="mobileMenuOpen = false">{{ t('nav_about', locale) }}</a>
                 <a href="/contact" class="block mt-4 w-full text-center border border-white/20 px-4 py-3 text-sm font-medium uppercase tracking-widest text-white hover:bg-white hover:text-black transition-colors" @click="mobileMenuOpen = false">{{ t('nav_contact', locale) }}</a>
             </div>
         </div>

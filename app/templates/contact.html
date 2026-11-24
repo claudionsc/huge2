@@ -50,13 +50,16 @@
                             <select id="service" name="service"
                                 class="w-full border border-white/15 bg-black px-4 py-3 text-sm text-white/70 focus:border-white/40 focus:outline-none transition-colors">
                                 <option value="">{{ t('contact_service_select', locale) }}</option>
-                                {% for category in service_categories %}
-                                <optgroup label="{{ category.name(locale) }}">
-                                    {% for service in category.services_list %}
-                                    <option value="{{ service.id }}">{{ service.title(locale) }}</option>
-                                    {% endfor %}
+                                <optgroup label="{{ t('nav_website_development', locale) }}">
+                                    <option value="landing-pages">{{ t('landing_pages_title', locale) }}</option>
+                                    <option value="institutional-sites">{{ t('institutional_sites_title', locale) }}</option>
                                 </optgroup>
-                                {% endfor %}
+                                <optgroup label="{{ t('nav_hosting', locale) }}">
+                                    <option value="hosting-maintenance">{{ t('hosting_title', locale) }}</option>
+                                </optgroup>
+                                <optgroup label="{{ t('nav_professional_email', locale) }}">
+                                    <option value="professional-email">{{ t('email_title', locale) }}</option>
+                                </optgroup>
                                 <option value="other">{{ t('contact_service_other', locale) }}</option>
                             </select>
                         </div>

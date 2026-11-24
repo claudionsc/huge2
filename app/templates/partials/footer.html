@@ -32,9 +32,9 @@
                 <h3 class="text-xs font-medium uppercase tracking-widest text-white/30 mb-5">{{ t('footer_company', locale) }}</h3>
                 <ul class="space-y-3">
                     <li><a href="/about" class="text-sm text-white/50 hover:text-white transition-colors">{{ t('footer_about_us', locale) }}</a></li>
-                    <li><a href="/#services" class="text-sm text-white/50 hover:text-white transition-colors">{{ t('nav_services', locale) }}</a></li>
-                    <li><a href="/#products" class="text-sm text-white/50 hover:text-white transition-colors">{{ t('nav_products', locale) }}</a></li>
-                    <li><a href="/portfolio" class="text-sm text-white/50 hover:text-white transition-colors">{{ t('footer_case_studies', locale) }}</a></li>
+                    <li><a href="/#website-development" class="text-sm text-white/50 hover:text-white transition-colors">{{ t('nav_website_development', locale) }}</a></li>
+                    <li><a href="/#hosting" class="text-sm text-white/50 hover:text-white transition-colors">{{ t('nav_hosting', locale) }}</a></li>
+                    <li><a href="/#professional-email" class="text-sm text-white/50 hover:text-white transition-colors">{{ t('nav_professional_email', locale) }}</a></li>
                     <li><a href="/contact" class="text-sm text-white/50 hover:text-white transition-colors">{{ t('nav_contact', locale) }}</a></li>
                 </ul>
             </div>
@@ -42,9 +42,10 @@
             <div>
                 <h3 class="text-xs font-medium uppercase tracking-widest text-white/30 mb-5">{{ t('footer_services', locale) }}</h3>
                 <ul class="space-y-3">
-                    {% for category in service_categories %}
-                    <li><a href="/#services" class="text-sm text-white/50 hover:text-white transition-colors">{{ category.name(locale) }}</a></li>
-                    {% endfor %}
+                    <li><a href="/#website-development" class="text-sm text-white/50 hover:text-white transition-colors">{{ t('landing_pages_title', locale) }}</a></li>
+                    <li><a href="/#website-development" class="text-sm text-white/50 hover:text-white transition-colors">{{ t('institutional_sites_title', locale) }}</a></li>
+                    <li><a href="/#hosting" class="text-sm text-white/50 hover:text-white transition-colors">{{ t('hosting_title', locale) }}</a></li>
+                    <li><a href="/#professional-email" class="text-sm text-white/50 hover:text-white transition-colors">{{ t('email_title', locale) }}</a></li>
                 </ul>
             </div>
 
